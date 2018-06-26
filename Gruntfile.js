@@ -1,4 +1,4 @@
-var credentials = require('credentials.js')
+var credentials = require('./credentials.js')
 
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-screeps');
