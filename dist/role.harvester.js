@@ -29,11 +29,16 @@ getNumberOfHarvesters = () => {
     return _.filter(Game.creeps, (gameCreep) => { return gameCreep.memory.task == "harvest" }).length;
 }
 
-const MINIMUM_NUMBER_OF_HARVESTERS = 1;
-
 var roleHarvester = {
     run: function(creep, taskRequester) {
-        if(creep.carry.energy < creep.carryCapacity) {
+        if(creep.memory.working && creep.carry.energy == 0) {
+            creep.memory.working = false;
+        }
+        if(!creep.memory.working && creep.carry.energy == creep.carryCapacity) {
+            creep.memory.working = true;
+        }
+
+        if(!creep.memory.working) {
             harvestMinerals(creep)
         }
         else {
@@ -46,7 +51,7 @@ var roleHarvester = {
                     taskRequester.getTask(creep);
                 }
             } 
-            // if the spawn is not full, fill the spawns first
+            // if the spawn is not full, fill the spawn first
             else {
                 let depositStructure = Game.spawns['MainSpawn'];
                 moveAndDepositEnergy(creep, depositStructure);

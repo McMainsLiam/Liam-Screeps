@@ -27,22 +27,22 @@ thereAreConstructionSitesAvailable = (creep) => {
 var roleBuilder = {
     run: function(creep, taskRequester) {
 
-        if(creep.memory.building && creep.carry.energy == 0) {
-            creep.memory.building = false;
+        if(creep.memory.working && creep.carry.energy == 0) {
+            creep.memory.working = false;
         }
-        if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
-            creep.memory.building = true;
+        if(!creep.memory.working && creep.carry.energy == creep.carryCapacity) {
+            creep.memory.working = true;
         }
         
         if(thereAreConstructionSitesAvailable(creep)) {
-            if(creep.memory.building) {
+            if(creep.memory.working) {
                 buildNearestObject(creep);
             } 
             else {
                 harvestMinerals(creep);
             }
         } else {
-            if(creep.memory.building) {
+            if(creep.memory.working) {
                 taskRequester.getTask(creep);
             } else {
                 if(creep.carry.energy < creep.carryCapacity) {

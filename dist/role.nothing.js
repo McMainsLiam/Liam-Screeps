@@ -5,7 +5,7 @@ moveOutOfTheWay = (creep) => {
 
 module.exports = {
   run: function(creep, taskRequester) {
-    this.moveOutOfTheWay(creep)
+    moveOutOfTheWay(creep)
     taskRequester.getTask(creep)
   }
 }

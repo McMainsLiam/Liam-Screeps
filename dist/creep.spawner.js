@@ -1,83 +1,11 @@
-let creepsToSpawn = [
-    {
-      role: "harvester",
-      numberToSpawn: 3,
-      body: [
-        MOVE,
-        MOVE,
-        CARRY,
-        CARRY,
-        WORK,
-        WORK
-      ],
-      precedence: 8,
-      startingMemory: {
-          role: "harvester",
-          task: "harvest"
-      } 
-    },
-    {
-      role: "builder",
-      numberToSpawn: 3,
-      body: [
-        MOVE,
-        MOVE,
-        CARRY,
-        CARRY,
-        WORK,
-        WORK
-      ],
-      precedence: 10,
-      startingMemory: {
-        role: "builder",
-        task: "build",
-        building: false
-      }
-    },
-    {
-        role: "upgrader",
-        numberToSpawn: 1,
-        body: [
-          MOVE,
-          MOVE,
-          CARRY,
-          CARRY,
-          WORK,
-          WORK
-        ],
-        precedence: 9,
-        startingMemory: {
-          role: "upgrader",
-          task: "upgrade",
-          upgrading: false
-        }
-      },
-      {
-        role: "repairer",
-        numberToSpawn: 2,
-        body: [
-          MOVE,
-          MOVE,
-          CARRY,
-          CARRY,
-          WORK,
-          WORK
-        ],
-        precedence: 9,
-        startingMemory: {
-          role: "repairer",
-          task: "repair",
-          repairing: false
-        }
-      }    
-  ];
-
+var creepsToSpawn = require('creep.spawns')
   
 spawnCreepIfNeeded = (creep) => {
     var creepsOfType = _.filter(Game.creeps, (gameCreep) => { return gameCreep.memory.role == creep.role });
-    if(creepsOfType.length < creep.numberToSpawn) {
-        console.log("Spawning: " + creep.role)
-        Game.spawns["MainSpawn"].spawnCreep(creep.body, creep.role + Game.time, {memory: creep.startingMemory})
+    if(creepsOfType.length < creep.roleMinimum) {
+        if(Game.spawns["MainSpawn"].spawnCreep(creep.body, creep.role + Game.time, {memory: creep.startingMemory}) == OK) {
+            console.log("Spawning creep: " + creep.role)
+        }
     }
 }
 

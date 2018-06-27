@@ -2,7 +2,8 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
-var roleNothing = require('role.nothing')
+var roleNothing = require('role.nothing');
+var roleScouter = require('role.scouter');
 var spawner = require('creep.spawner');
 var taskRequester = require('task.requester');
 
@@ -37,6 +38,9 @@ assignTask = (creep) => {
     }
     if(creep.memory.task == 'repair') {
         roleRepairer.run(creep, taskRequester);
+    }
+    if(creep.memory.task == 'scout') {
+        roleScouter.run(creep, taskRequester);
     }
     if(creep.memory.task == 'nothing') {
         roleNothing.run(creep, taskRequester);
