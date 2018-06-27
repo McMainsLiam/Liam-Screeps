@@ -17,7 +17,7 @@ module.exports.loop = function () {
         let creep = Game.creeps[name];
 
         // every 5 seconds, reassign the creeps to do the most important task
-        if (Game.time % 5 === 0) { 
+        if (Game.time % 1 === 0) { 
             taskRequester.getTask(creep)
         }
 

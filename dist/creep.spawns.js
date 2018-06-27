@@ -1,9 +1,9 @@
 module.exports = [
   {
     role: "harvester",
-    roleMinimum: 3,
+    roleMinimum: 2,
     taskMinimum: 0,
-    body: [MOVE, MOVE, CARRY, CARRY, WORK, WORK],
+    body: [MOVE, MOVE, CARRY, CARRY, CARRY, CARRY, WORK, WORK, WORK],
     precedence: 8,
     startingMemory: {
       role: "harvester",
@@ -12,9 +12,9 @@ module.exports = [
   },
   {
     role: "builder",
-    roleMinimum: 3,
+    roleMinimum: 2,
     taskMinimum: 0,
-    body: [MOVE, MOVE, CARRY, CARRY, WORK, WORK],
+    body: [MOVE, MOVE, CARRY, CARRY, CARRY, CARRY, WORK, WORK, WORK],
     precedence: 10,
     startingMemory: {
       role: "builder",
@@ -26,7 +26,7 @@ module.exports = [
     role: "upgrader",
     roleMinimum: 1,
     taskMinimum: 1,
-    body: [MOVE, MOVE, CARRY, CARRY, WORK, WORK],
+    body: [MOVE, MOVE, CARRY, CARRY, CARRY, CARRY, WORK, WORK, WORK],
     precedence: 9,
     startingMemory: {
       role: "upgrader",
@@ -36,9 +36,9 @@ module.exports = [
   },
   {
     role: "repairer",
-    roleMinimum: 2,
+    roleMinimum: 1,
     taskMinimum: 1,
-    body: [MOVE, MOVE, CARRY, CARRY, WORK, WORK],
+    body: [MOVE, MOVE, CARRY, CARRY, CARRY, CARRY, WORK, WORK, WORK],
     precedence: 9,
     startingMemory: {
       role: "repairer",
@@ -49,8 +49,8 @@ module.exports = [
   {
     role: "scouter",
     roleMinimum: 0,
-    taskMinimum: 1,
-    body: [MOVE, MOVE, MOVE, MOVE],
+    taskMinimum: 0,
+    body: [MOVE, CLAIM],
     precedence: 15,
     startingMemory: {
       role: "scouter",
